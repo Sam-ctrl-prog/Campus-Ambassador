@@ -969,7 +969,52 @@
     </div>
 
     <script>
-        /
+        
+  document.addEventListener('DOMContentLoaded', () => {
+    const leaderboardBody = document.querySelector('tbody');
+    const searchInput = document.querySelector('.search-input');
+
+    function renderDashboardLeaderboard(data) {
+      leaderboardBody.innerHTML = '';
+
+      // Sort by rank
+      data.sort((a, b) => a.rank - b.rank);
+
+      data.forEach(entry => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td>${entry.rank <= 3 ? `🏆 ${entry.rank}` : entry.rank}</td>
+          <td>${entry.name}</td>
+          <td>${entry.college}</td>
+          <td>${entry.points.toLocaleString()}</td>
+          <td>₹${entry.revenue.toLocaleString()}</td>
+        `;
+
+        leaderboardBody.appendChild(tr);
+      });
+    }
+
+    function filterLeaderboard(query) {
+      const fullData = JSON.parse(localStorage.getItem('leaderboardData')) || [];
+      const filtered = fullData.filter(entry =>
+        entry.name.toLowerCase().includes(query.toLowerCase()) ||
+        entry.college.toLowerCase().includes(query.toLowerCase())
+      );
+      renderDashboardLeaderboard(filtered);
+    }
+
+    // Load and render leaderboard
+    const leaderboardData = JSON.parse(localStorage.getItem('leaderboardData')) || [];
+    renderDashboardLeaderboard(leaderboardData);
+
+    // Search event
+    searchInput.addEventListener('input', () => {
+      filterLeaderboard(searchInput.value);
+    });
+  });
+
+
         // Add interactive features
         document.addEventListener('DOMContentLoaded', function() {
             // Make table rows clickable
