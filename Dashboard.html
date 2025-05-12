@@ -968,138 +968,57 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const leaderboardBody = document.querySelector('tbody');
-            const searchInput = document.querySelector('.search-input');
+        const leaderboardBody = document.querySelector('tbody');
+        const searchInput = document.querySelector('.search-input');
 
-            // Example Data (Ensure this matches your actual data structure in localStorage or elsewhere)
-            const leaderboardData = [
-                { name: "Suhail V", contact: "8075945980", college: "Muthoot", code: "SHL980", registrations: 34 },
-                { name: "Safna Jaleel", contact: "8848060095", college: "PACELAB", code: "FFN095", registrations: 29 },
-                { name: "Joshin", contact: "7907206042", college: "Mount Zion", code: "JHN060", registrations: 24 },
-                { name: "Riya Jason", contact: "8304042710", college: "College of Perumon", code: "RYJ427", registrations: 16 },
-                { name: "MUHAMMED ASHLY", contact: "8086348962", college: "PACELAB", code: "MDY808", registrations: 16 },
-                { name: "Sreehari", contact: "9656002147", college: "St thomas College", code: "SRH965", registrations: 14 },
-                { name: "Devika Sreejith", contact: "8590699509", college: "Vimal Jyothi Engineering College", code: "DVA589", registrations: 12 },
-                { name: "Febin", contact: "8086505757", college: "Sreebuddha", code: "FBN757", registrations: 11 },
-                { name: "Albino Siby", contact: "7034592461", college: "Vimal Jyothi Engineering College", code: "BLK459", registrations: 8 },
-                { name: "Lekshmi B Nair", contact: "8281556368", college: "Gec Wayanad", code: "LKM368", registrations: 6 }
-            ];
+        // Hardcoded leaderboard data with 15 entries
+        const leaderboardData = [
+            { name: 'Suhail V', contact: '8075945980', college: 'Muthoot', code: 'SHL980', registrations: 34 }, // 1st Rank
+            { name: 'Safna Jaleel', contact: '8848060095', college: 'PACELAB', code: 'FFN095', registrations: 29 }, // 2nd Rank
+            { name: 'Joshin', contact: '7907206042', college: 'Mount Zion', code: 'JHN060', registrations: 24 }, // 3rd Rank
+            { name: 'Riya Jason', contact: '8304042710', college: 'College of Perumon', code: 'RYJ427', registrations: 16 },
+            { name: 'MUHAMMED ASHLY', contact: '8086348962', college: 'PACELAB', code: 'MDY808', registrations: 16 },
+            { name: 'Sreehari', contact: '9656002147', college: 'St thomas College', code: 'SRH965', registrations: 14 },
+            { name: 'Devika Sreejith', contact: '8590699509', college: 'Vimal Jyothi Engineering College', code: 'DVA589', registrations: 12 },
+            { name: 'Febin', contact: '8086505757', college: 'Sreebuddha', code: 'FBN757', registrations: 11 },
+            { name: 'Albino Siby', contact: '7034592461', college: 'Vimal Jyothi Engineering College', code: 'BLK459', registrations: 8 },
+            { name: 'Lekshmi B Nair', contact: '8281556368', college: 'Gec Wayanad', code: 'LKM368', registrations: 6 },
+            { name: 'Harikrishnan', contact: '9400965118', college: 'College of Perumon', code: 'HKN061', registrations: 6 },
+            { name: 'Akhil Anil', contact: '8113088385', college: 'Trinity', code: 'AAN811', registrations: 6 },
+            { name: 'Aafrin', contact: '9995770018', college: 'ilahia college of engineering', code: 'RAF781', registrations: 6 },
+            { name: 'Diya', contact: '7736310311', college: 'MES kuttipuram', code: 'AYI311', registrations: 5 },
+            { name: 'Alf Joe', contact: '6235401069', college: 'SCT', code: 'ALF416', registrations: 4 }
+        ];
 
-            function renderLeaderboard(data) {
-                leaderboardBody.innerHTML = '';  // Clear current rows
-                data.forEach(entry => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${entry.name}</td>
-                        <td>${entry.contact}</td>
-                        <td>${entry.college}</td>
-                        <td>${entry.code}</td>
-                        <td>${entry.registrations}</td>
-                    `;
-                    leaderboardBody.appendChild(tr);
-                });
-            }
+        // Render leaderboard
+        renderLeaderboard(leaderboardData);
 
-            // Render leaderboard on page load
-            renderLeaderboard(leaderboardData);
-        
-  document.addEventListener('DOMContentLoaded', () => {
-    const leaderboardBody = document.querySelector('tbody');
-    const searchInput = document.querySelector('.search-input');
-
-    function renderDashboardLeaderboard(data) {
-      leaderboardBody.innerHTML = '';
-
-      // Sort by rank
-      data.sort((a, b) => a.rank - b.rank);
-
-      data.forEach(entry => {
-        const tr = document.createElement('tr');
-
-        tr.innerHTML = `
-          <td>${entry.rank <= 3 ? `🏆 ${entry.rank}` : entry.rank}</td>
-          <td>${entry.name}</td>
-          <td>${entry.college}</td>
-          <td>${entry.points.toLocaleString()}</td>
-          <td>₹${entry.revenue.toLocaleString()}</td>
-        `;
-
-        leaderboardBody.appendChild(tr);
-      });
-    }
-
-    function filterLeaderboard(query) {
-      const fullData = JSON.parse(localStorage.getItem('leaderboardData')) || [];
-      const filtered = fullData.filter(entry =>
-        entry.name.toLowerCase().includes(query.toLowerCase()) ||
-        entry.college.toLowerCase().includes(query.toLowerCase())
-      );
-      renderDashboardLeaderboard(filtered);
-    }
-
-    // Load and render leaderboard
-    const leaderboardData = JSON.parse(localStorage.getItem('leaderboardData')) || [];
-    renderDashboardLeaderboard(leaderboardData);
-
-    // Search event
-    searchInput.addEventListener('input', () => {
-      filterLeaderboard(searchInput.value);
-    });
-  });
-
-
-        // Add interactive features
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make table rows clickable
-            const tableRows = document.querySelectorAll('tbody tr');
-            tableRows.forEach(row => {
-                row.addEventListener('click', function() {
-                    tableRows.forEach(r => r.style.opacity = '0.6');
-                    this.style.opacity = '1';
-                    this.style.transform = 'translateX(10px)';
-                    
-                    setTimeout(() => {
-                        tableRows.forEach(r => r.style.opacity = '1');
-                        this.style.transform = 'translateX(0)';
-                    }, 1500);
-                });
-            });
-            
-            // Search functionality
-            const searchInput = document.querySelector('.search-input');
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                tableRows.forEach(row => {
-                    const name = row.children[1].textContent.toLowerCase();
-                    const college = row.children[2].textContent.toLowerCase();
-                    
-                    if (name.includes(searchTerm) || college.includes(searchTerm)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            });
-            
-            // Highlight champion on hover
-            const championIcon = document.querySelector('.champion-icon');
-            championIcon.addEventListener('mouseover', function() {
-                document.querySelector('.champion-name').style.textShadow = '0 0 10px rgba(255, 255, 255, 0.5)';
-            });
-            
-            championIcon.addEventListener('mouseout', function() {
-                document.querySelector('.champion-name').style.textShadow = 'none';
-            });
+        // Add search functionality
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const filteredData = leaderboardData.filter(entry =>
+                entry.name.toLowerCase().includes(query) ||
+                entry.college.toLowerCase().includes(query)
+            );
+            renderLeaderboard(filteredData);
         });
-        // Sort rows by registration count descending
-function sortTable() {
-  const tbody = document.querySelector('tbody');
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  rows.sort((a, b) => b.cells[4].innerText - a.cells[4].innerText);
-  rows.forEach(row => tbody.appendChild(row));
-}
-sortTable();
 
+        // Function to render leaderboard
+        function renderLeaderboard(data) {
+            leaderboardBody.innerHTML = ''; // Clear existing rows
+            data.forEach((entry, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : ''} ${entry.name}</td>
+                    <td>${entry.contact}</td>
+                    <td>${entry.college}</td>
+                    <td>${entry.code}</td>
+                    <td>${entry.registrations}</td>
+                `;
+                leaderboardBody.appendChild(row);
+            });
+        }
+    });
     </script>
 </body>
 </html>
