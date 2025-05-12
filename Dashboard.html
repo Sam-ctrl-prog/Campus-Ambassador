@@ -1065,6 +1065,15 @@
                 document.querySelector('.champion-name').style.textShadow = 'none';
             });
         });
+        // Sort rows by registration count descending
+function sortTable() {
+  const tbody = document.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a, b) => b.cells[4].innerText - a.cells[4].innerText);
+  rows.forEach(row => tbody.appendChild(row));
+}
+sortTable();
+
     </script>
 </body>
 </html>
