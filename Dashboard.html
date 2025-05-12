@@ -973,21 +973,21 @@
 
         // Hardcoded leaderboard data with 15 entries
         const leaderboardData = [
-            { name: 'Suhail V', contact: '8075945980', college: 'Muthoot', code: 'SHL980', registrations: 34 }, // 1st Rank
-            { name: 'Safna Jaleel', contact: '8848060095', college: 'PACELAB', code: 'FFN095', registrations: 29 }, // 2nd Rank
-            { name: 'Joshin', contact: '7907206042', college: 'Mount Zion', code: 'JHN060', registrations: 24 }, // 3rd Rank
-            { name: 'Riya Jason', contact: '8304042710', college: 'College of Perumon', code: 'RYJ427', registrations: 16 },
-            { name: 'MUHAMMED ASHLY', contact: '8086348962', college: 'PACELAB', code: 'MDY808', registrations: 16 },
-            { name: 'Sreehari', contact: '9656002147', college: 'St thomas College', code: 'SRH965', registrations: 14 },
-            { name: 'Devika Sreejith', contact: '8590699509', college: 'Vimal Jyothi Engineering College', code: 'DVA589', registrations: 12 },
-            { name: 'Febin', contact: '8086505757', college: 'Sreebuddha', code: 'FBN757', registrations: 11 },
-            { name: 'Albino Siby', contact: '7034592461', college: 'Vimal Jyothi Engineering College', code: 'BLK459', registrations: 8 },
-            { name: 'Lekshmi B Nair', contact: '8281556368', college: 'Gec Wayanad', code: 'LKM368', registrations: 6 },
-            { name: 'Harikrishnan', contact: '9400965118', college: 'College of Perumon', code: 'HKN061', registrations: 6 },
-            { name: 'Akhil Anil', contact: '8113088385', college: 'Trinity', code: 'AAN811', registrations: 6 },
-            { name: 'Aafrin', contact: '9995770018', college: 'ilahia college of engineering', code: 'RAF781', registrations: 6 },
-            { name: 'Diya', contact: '7736310311', college: 'MES kuttipuram', code: 'AYI311', registrations: 5 },
-            { name: 'Alf Joe', contact: '6235401069', college: 'SCT', code: 'ALF416', registrations: 4 }
+            { name: 'Suhail V', college: 'Muthoot', code: 'SHL980', registrations: 34 }, // 1st Rank
+            { name: 'Safna Jaleel', college: 'Illahi College', code: 'FFN095', registrations: 29 }, // 2nd Rank
+            { name: 'Joshin', college: 'Mount Zion', code: 'JHN060', registrations: 24 }, // 3rd Rank
+            { name: 'Riya Jason', college: 'College of Perumon', code: 'RYJ427', registrations: 16 },
+            { name: 'MUHAMMED ASHLY', college: 'Illahi College', code: 'MDY808', registrations: 16 },
+            { name: 'Sreehari', college: 'St thomas College', code: 'SRH965', registrations: 14 },
+            { name: 'Devika Sreejith', college: 'Vimal Jyothi Engineering College', code: 'DVA589', registrations: 12 },
+            { name: 'Febin', college: 'Sreebuddha', code: 'FBN757', registrations: 11 },
+            { name: 'Albino Siby', college: 'Vimal Jyothi Engineering College', code: 'BLK459', registrations: 8 },
+            { name: 'Lekshmi B Nair', college: 'Gec Wayanad', code: 'LKM368', registrations: 6 },
+            { name: 'Harikrishnan', college: 'College of Perumon', code: 'HKN061', registrations: 6 },
+            { name: 'Akhil Anil', college: 'Trinity', code: 'AAN811', registrations: 6 },
+            { name: 'Aafrin', college: 'ilahia college of engineering', code: 'RAF781', registrations: 6 },
+            { name: 'Diya', college: 'MES kuttipuram', code: 'AYI311', registrations: 5 },
+            { name: 'Alf Joe', college: 'SCT', code: 'ALF416', registrations: 4 }
         ];
 
         // Render leaderboard
@@ -1010,7 +1010,6 @@
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : ''} ${entry.name}</td>
-                    <td>${entry.contact}</td>
                     <td>${entry.college}</td>
                     <td>${entry.code}</td>
                     <td>${entry.registrations}</td>
