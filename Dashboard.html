@@ -798,6 +798,7 @@
                     <th>College</th>
                     <th>Code</th>
                     <th>Registrations</th>
+                    <th> Revenue</th>
                 </tr>
             </thead>
             <tbody>
@@ -972,22 +973,27 @@
 
         // Hardcoded leaderboard data with 15 entries
         const leaderboardData = [
-            { name: 'Suhail V', college: 'Muthoot', code: 'SHL980', registrations: 34 }, // 1st Rank
-            { name: 'Safna Jaleel', college: 'Ilahia college of engineering', code: 'FFN095', registrations: 29 }, // 2nd Rank
-            { name: 'Joshin', college: 'Mount Zion', code: 'JHN060', registrations: 24 }, // 3rd Rank
-            { name: 'Riya Jason', college: 'College of Perumon', code: 'RYJ427', registrations: 16 },
-            { name: 'MUHAMMED ASHLY', college: 'Ilahia college of engineering', code: 'MDY808', registrations: 16 },
-            { name: 'Sreehari', college: 'St thomas College', code: 'SRH965', registrations: 14 },
-            { name: 'Devika Sreejith', college: 'Vimal Jyothi Engineering College', code: 'DVA589', registrations: 12 },
-            { name: 'Febin', college: 'Sreebuddha', code: 'FBN757', registrations: 11 },
-            { name: 'Albino Siby', college: 'Vimal Jyothi Engineering College', code: 'BLK459', registrations: 8 },
-            { name: 'Lekshmi B Nair', college: 'Gec Wayanad', code: 'LKM368', registrations: 6 },
-            { name: 'Harikrishnan', college: 'College of Perumon', code: 'HKN061', registrations: 6 },
-            { name: 'Akhil Anil', college: 'Trinity', code: 'AAN811', registrations: 6 },
-            { name: 'Aafrin', college: 'ilahia college of engineering', code: 'RAF781', registrations: 6 },
-            { name: 'Diya', college: 'MES kuttipuram', code: 'AYI311', registrations: 5 },
-            { name: 'Alf Joe', college: 'SCT', code: 'ALF416', registrations: 4 }
-        ];
+  { name: 'Suhail V', college: 'Muthoot', code: 'SHL980', registrations: 47, applications: 41, totalPoints: 511, totalRevenue: 10220 },
+  { name: 'Safna Jaleel', college: 'Ilahia College of Engineering', code: 'FFN095', registrations: 40, applications: 53, totalPoints: 453, totalRevenue: 9060 },
+  { name: 'Faez TP', college: 'PACELAB', code: 'ZFT989', registrations: 31, applications: 22, totalPoints: 332, totalRevenue: 6640 },
+  { name: 'Riya Jason', college: 'College of Perumon', code: 'RYJ427', registrations: 27, applications: 37, totalPoints: 307, totalRevenue: 6140 },
+  { name: 'Joshin', college: 'Mount Zion', code: 'JHN060', registrations: 24, applications: 36, totalPoints: 276, totalRevenue: 5520 },
+  { name: 'Ajil P R', college: 'ICCS', code: 'AJL257', registrations: 22, applications: 24, totalPoints: 244, totalRevenue: 4880 },
+  { name: 'Sreehari', college: 'St thomas College', code: 'SRH965', registrations: 17, applications: 19, totalPoints: 189, totalRevenue: 3780 },
+  { name: 'MUHAMMED ASHLY', college: 'Ilahia College of Engineering', code: 'MDY808', registrations: 16, applications: 29, totalPoints: 189, totalRevenue: 3780 },
+  { name: 'Devika Sreejith', college: 'Vimal Jyothi Engineering College', code: 'DVA589', registrations: 18, applications: 0, totalPoints: 180, totalRevenue: 3600 },
+  { name: 'Lekshmi B Nair', college: 'Gec Wayanad', code: 'LKM368', registrations: 6, applications: 117, totalPoints: 177, totalRevenue: 3540 },
+             { name: 'Harikrishnan', college: 'College of perumon', code: 'HKN061', registrations: 8, applications: 74, totalPoints: 154, totalRevenue: 3080 },
+  { name: 'Albino Siby', college: 'Vimal Jyothi Engineering College', code: 'BLK459', registrations: 13, applications: 22, totalPoints: 152, totalRevenue: 3040 },
+  { name: 'Febin', college: 'Sreebuddha', code: 'FBN757', registrations: 11, applications: 23, totalPoints: 133, totalRevenue: 2660 },
+  { name: 'Antreena', college: 'Fisat', code: 'TRN623', registrations: 7, applications: 0, totalPoints: 70, totalRevenue: 1400 },
+  { name: 'Akhil Anil', college: 'Trinity', code: 'AAN811', registrations: 6, applications: 0, totalPoints: 60, totalRevenue: 1200 },
+  { name: 'Ameera', college: 'Gec', code: 'AMR827', registrations: 0, applications: 18, totalPoints: 18, totalRevenue: 360 },
+  { name: 'MOHAMED NIYAS P', college: 'KMCT COLLEGE OF ENGINEERING CALICUT', code: 'NIY802', registrations: 0, applications: 15, totalPoints: 15, totalRevenue: 300 },
+  { name: 'Sapna', college: 'MEA', code: 'SPA159', registrations: 0, applications: 15, totalPoints: 15, totalRevenue: 300 }
+];
+ 
+
 
         // Render leaderboard
         renderLeaderboard(leaderboardData);
@@ -1012,6 +1018,7 @@
                     <td>${entry.college}</td>
                     <td>${entry.code}</td>
                     <td>${entry.registrations}</td>
+                    <td>${entry.revenue}</td>
                 `;
                 leaderboardBody.appendChild(row);
             });
